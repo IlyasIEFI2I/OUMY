@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Succès ❤️</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="background-gradient"></div>
+
+    <div class="success-container">
+        <!-- Canvas pour les confettis -->
+        <canvas id="confetti"></canvas>
+
+        <div class="success-content fade-in">
+            <!-- Texte de célébration 1 -->
+            <div class="success-text success-text-1">
+                <h1 class="success-title">OUMI ZOUMI lhoub diali❤️</h1>
+            </div>
+
+            <!-- Texte de célébration 2 -->
+            <div class="success-text success-text-2">
+                <p class="success-message">Merci d'avoir dit oui.</p>
+            </div>
+
+            <!-- Message personnalisé -->
+            <div class="success-text success-text-3">
+                <p class="success-message" style="line-height: 1.8; text-align: left; font-size: 0.95em;">
+                    Men nhar lwl lli hdrt m3ak hassit b chi haja binatna lli machi 3adya. Kanwa3dk an3tik ga3 ma 3ndi men amour, respect w attention. 
+                    <br><br>
+                    Je te promets d'être là dans les bons moments comme dans les moments difficiles. Je te promets de te faire sourire quand tu seras triste, de croire en toi quand tu douteras et de toujours te traiter avec respect. 
+                    <br><br>
+                    Ma kan3refch chno kaykhbi lina l'avenir, walakin kay3jbeni nktachfouh ensemble. 
+                    <br><br>
+                    Merci d'être toi. Merci pour ton sourire. Merci pour chaque moment passé avec toi. Et maintenant... 
+                    <span style="font-weight: bold; font-size: 1.1em;">officiellement ❤️</span>
+                </p>
+            </div>
+
+            <!-- Texte célébration -->
+            <div class="success-text success-text-4">
+                <p class="success-message" style="font-size: 1.3em; font-weight: 600; margin: 30px 0;">
+                    💍 Nous sommes ensemble 💍
+                </p>
+            </div>
+
+            <!-- Signature -->
+            <div class="success-text success-text-5">
+                <p class="success-message" style="font-size: 1.1em; font-weight: 500;">
+                    Ilyas ❤️ Oumaima
+                </p>
+            </div>
+
+            <!-- Cœurs animés -->
+            <div class="hearts-celebration">
+                <span class="heart-big">❤️</span>
+                <span class="heart-big heart-delay-1">💕</span>
+                <span class="heart-big heart-delay-2">💖</span>
+            </div>
+
+            <!-- Bouton retour -->
+            <a href="/" class="btn btn-primary success-btn">Retour à l'accueil</a>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animer les textes
+            const texts = document.querySelectorAll('.success-text');
+            texts.forEach((text, index) => {
+                text.style.animationDelay = (index * 0.8) + 's';
+            });
+
+            // Lancer les confettis
+            launchConfetti();
+        });
+
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+
+            // Créer les particules de confettis
+            for (let i = 0; i < 150; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: -10,
+                    vx: (Math.random() - 0.5) * 10,
+                    vy: Math.random() * 6 + 4,
+                    angle: Math.random() * Math.PI * 2,
+                    size: Math.random() * 10 + 5,
+                    color: ['#FF1493', '#FF69B4', '#FFB6C1', '#FFC0CB', '#FF6B9D', '#E91E63'][
+                        Math.floor(Math.random() * 6)
+                    ],
+                    life: 1,
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(p => {
+                    p.y += p.vy;
+                    p.x += p.vx;
+                    p.vy += 0.15;
+                    p.angle += 0.05;
+                    p.life -= 0.008;
+
+                    ctx.save();
+                    ctx.globalAlpha = p.life;
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.angle);
+                    ctx.fillStyle = p.color;
+
+                    // Dessiner un cœur ou une forme
+                    ctx.beginPath();
+                    ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.restore();
+                });
+
+                if (particles.some(p => p.life > 0)) {
+                    requestAnimationFrame(animate);
+                }
+            }
+
+            animate();
+        }
+
+        // Ajouter des cœurs au clic
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn')) return;
+
+            const heart = document.createElement('span');
+            heart.innerHTML = ['❤️', '💕', '💖', '🥰'][Math.floor(Math.random() * 4)];
+            heart.style.position = 'fixed';
+            heart.style.left = e.clientX + 'px';
+            heart.style.top = e.clientY + 'px';
+            heart.style.fontSize = '2em';
+            heart.style.zIndex = '9999';
+            heart.style.pointerEvents = 'none';
+            heart.style.animation = 'floatingHeart 1.5s ease-out forwards';
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 1500);
+        });
+    </script>
+    <style>
+        @keyframes floatingHeart {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-20px, -100px) scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</body>
+</html>

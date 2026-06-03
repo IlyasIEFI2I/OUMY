@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oumaima ❤️</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="background-gradient"></div>
+    
+    <!-- Cœurs flottants -->
+    <div class="hearts-container">
+        <div class="heart floating" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="heart floating" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="heart floating" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="heart floating" style="left: 70%; animation-delay: 0.5s;"></div>
+        <div class="heart floating" style="left: 80%; animation-delay: 1.5s;"></div>
+        <div class="heart floating" style="left: 90%; animation-delay: 2.5s;"></div>
+    </div>
+
+    <div class="container home-container">
+        <div class="home-content">
+            <!-- Premier texte -->
+            <div class="fade-in-text text-1">
+                <h1 class="title">OUMI ZOUMI HBIBA DIALI ❤️</h1>
+            </div>
+
+            <!-- Deuxième texte -->
+            <div class="fade-in-text text-2">
+                <p class="subtitle">Je t'ai préparé une petite liste de questions.</p>
+            </div>
+
+            <!-- Troisième texte -->
+            <div class="fade-in-text text-3">
+                <p class="subtitle-2">
+                    Réponds avec ton cœur... 
+                    <span style="display: block; margin-top: 15px;">mais attention 😏</span>
+                    <span style="display: block; margin-top: 10px; font-style: italic;">3andak tghalti !</span>
+                </p>
+            </div>
+
+            <!-- Quatrième texte -->
+            <div class="fade-in-text text-4">
+                <p class="subtitle" style="font-size: 1.5em; font-weight: 600;">Prête ? 🥰</p>
+            </div>
+
+            <!-- Bouton -->
+            <div class="fade-in-text text-5 button-container">
+                <a href="/question/1" class="btn btn-primary">
+                    <span class="btn-text">Yallah nbdaw ❤️</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        // Animer les textes avec délai
+        document.addEventListener('DOMContentLoaded', function() {
+            const texts = document.querySelectorAll('.fade-in-text');
+            texts.forEach((text, index) => {
+                text.style.animationDelay = (index * 0.8) + 's';
+            });
+
+            // Ajouter des cœurs supplémentaires pendant la visite
+            addHeartOnClick();
+        });
+
+        function addHeartOnClick() {
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.btn')) return;
+                
+                const heart = document.createElement('div');
+                heart.className = 'heart click-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = e.clientX + 'px';
+                heart.style.top = e.clientY + 'px';
+                
+                document.querySelector('.hearts-container').appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 1000);
+            });
+        }
+    </script>
+</body>
+</html>

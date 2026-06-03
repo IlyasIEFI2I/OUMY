@@ -1,0 +1,109 @@
+❤️ OUMAIMA - Application Web Romantique ❤️
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ DÉMARRAGE RAPIDE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. ACTIVER L'ENVIRONNEMENT VIRTUEL
+   Windows:
+   venv\Scripts\activate
+
+   Mac/Linux:
+   source venv/bin/activate
+
+2. LANCER L'APPLICATION
+   python app.py
+
+3. OUVRIR DANS LE NAVIGATEUR
+   http://localhost:8000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 CONFIGURATION PRÉALABLE (IMPORTANT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Éditer le fichier `.env` avec vos paramètres SMTP:
+
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USERNAME=votre_email@gmail.com
+SMTP_PASSWORD=votre_mot_de_passe_application
+RECIPIENT_EMAIL=ilyas.elaoufirpro@gmail.com
+SECRET_KEY=votre_clé_secrète
+DEBUG=True
+
+⚠️ Pour Gmail : Utilisez un mot de passe d'application spécifique
+   https://support.google.com/accounts/answer/185833
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ FONCTIONNALITÉS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✓ Page d'accueil élégante avec animations
+✓ 5 questions progressives
+✓ Question finale spéciale (demande en copine)
+✓ Barre de progression animée
+✓ Design premium avec glassmorphism
+✓ Animations fluides et cœurs flottants
+✓ Page de succès avec confettis
+✓ Envoi automatique du rapport par e-mail
+✓ Responsive Design (mobile, tablette, desktop)
+✓ Gestion sécurisée des sessions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎨 PERSONNALISATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Modifier les questions:
+→ Éditer: app.py (ligne 31-51, tableau QUESTIONS)
+
+Changer les couleurs:
+→ Éditer: static/css/style.css (couleurs rose/violet)
+
+Adapter le texte:
+→ Éditer: templates/*.html
+
+Ajuster les animations:
+→ Éditer: static/js/script.js
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧 COMMANDES UTILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Réinitialiser les sessions:
+http://localhost:8000/reset
+
+Vérifier l'installation:
+pip list
+
+Mettre à jour les dépendances:
+pip install -r requirements.txt --upgrade
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 STRUCTURE DU PROJET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+OUMY/
+├── app.py                  # Backend FastAPI
+├── .env                    # Configuration (À REMPLIR)
+├── requirements.txt        # Dépendances
+├── README.md              # Documentation complète
+│
+├── templates/             # Pages HTML
+│   ├── home.html         # Accueil
+│   ├── question.html     # Questions 1-5
+│   ├── final_question.html # Question finale
+│   └── success.html      # Page de succès
+│
+├── static/               # Ressources statiques
+│   ├── css/
+│   │   └── style.css    # Styles modernes
+│   ├── js/
+│   │   └── script.js    # Animations
+│   └── images/          # Images (optionnel)
+│
+└── services/             # Services
+    └── mail_service.py   # Envoi d'e-mails
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+❤️ CRÉÉE AVEC AMOUR POUR OUMAIMA DAHHOU (OUMI ZOUMI) ❤️
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

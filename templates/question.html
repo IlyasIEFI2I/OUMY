@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="background-gradient"></div>
+
+    <!-- Cœurs flottants -->
+    <div class="hearts-container">
+        <div class="heart floating" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="heart floating" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="heart floating" style="left: 70%; animation-delay: 0.5s;"></div>
+        <div class="heart floating" style="left: 90%; animation-delay: 2.5s;"></div>
+    </div>
+
+    <div class="container">
+        <div class="progress-section">
+            <!-- Barre de progression -->
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ progress }}%;"></div>
+            </div>
+            <p class="progress-text">Question {{ question_number }} sur {{ total_questions }}</p>
+        </div>
+
+        <form id="questionForm" method="POST" action="/answer/{{ question_number }}" class="question-form">
+            <div class="question-card fade-in">
+                <h2 class="question-text">{{ question.question }}</h2>
+
+                <div class="answers-grid">
+                    {% for answer in question.answers %}
+                    <label class="answer-option">
+                        <input type="radio" name="answer" value="{{ answer }}" required>
+                        <span class="answer-label">{{ answer }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-next">
+                    <span class="btn-text">Continuer ❤️</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/static/js/script.js">
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('questionForm');
+            const answerOptions = document.querySelectorAll('.answer-option');
+            let selectedAnswer = null;
+
+            // Ajouter un effet de sélection
+            answerOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    answerOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedAnswer = this.querySelector('input').value;
+                });
+            });
+
+            // Animation de soumission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if (!selectedAnswer) {
+                    alert('Veuillez sélectionner une réponse');
+                    return;
+                }
+
+                // Ajouter l'animation de sortie
+                const card = document.querySelector('.question-card');
+                card.classList.add('slide-out');
+
+                // Soumettre après l'animation
+                setTimeout(() => {
+                    form.submit();
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
