@@ -221,10 +221,6 @@ async def submit_final_answer(request: Request):
     sessions[session_id]["completed"] = True
 
     # Envoyer l'e-mail avec le rapport
-    await mail_service.send_report(
-        sessions[session_id]["answers"],
-        sessions[session_id]["ip"],
-    )
 
     return RedirectResponse(url="/success", status_code=302)
 
