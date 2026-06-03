@@ -47,7 +47,7 @@ class MailService:
 
             # Envoyer l'e-mail
             if self.smtp_username and self.smtp_password:
-                async with aiosmtplib.SMTP(hostname=self.smtp_server, port=self.smtp_port) as smtp:
+                async with aiosmtplib.SMTP(hostname=self.smtp_server, port=465, use_tls=True) as smtp:
                     await smtp.login(self.smtp_username, self.smtp_password)
                     await smtp.send_message(message)
                 return True
